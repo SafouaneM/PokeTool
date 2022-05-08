@@ -14,7 +14,7 @@ class PartyController extends Controller
     protected function showParty(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
 
-        $partys = Party::with('users')->get();
+        $partys = Party::with('users')->where('user_id' ,'=', auth()->user()->id)->get();
 
         return view('user.party.index', ['partys' => $partys]);
     }

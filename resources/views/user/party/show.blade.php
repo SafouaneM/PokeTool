@@ -24,6 +24,7 @@
 
                             @foreach ($partys as $party)
                                 @foreach($party->users as $user)
+                                    @if($user->pivot->user_id === auth()->user()->id)
 ers                                    <h3 class="mb-1 text-xl font-medium text-gray-900 ">Name: {{$party->name}}</h3>
                                     <p class="mb-1 text-md font-medium text-gray-900 ">
                                         Nickname: {{$user->pivot->getOriginal('nickname')}} </p>
@@ -31,6 +32,7 @@ ers                                    <h3 class="mb-1 text-xl font-medium text-
                                         Level: {{$user->pivot->getOriginal('level')}}</p>
                                     <p class="mb-1 text-md font-medium text-gray-900 ">
                                         YOUR description about your pokemon: {{$user->pivot->getOriginal('description')}}</p>
+                                    @endif
                                 @endforeach
                             @endforeach
 

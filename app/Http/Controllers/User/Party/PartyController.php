@@ -53,7 +53,7 @@ class PartyController extends Controller
                 PartyPokemon::create(
                     [
                         'pokemon_id' => $pokemonId,
-                        'parties_id' => $party->id,
+                        'party_id' => $party->id,
                     ]
 
                 );

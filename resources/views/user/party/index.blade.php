@@ -17,7 +17,7 @@
                     </a>
                     <h1>Your party's</h1>
                     @foreach($partys as $party)
-                            {{dd($party)}}
+
                         <div class="grid gap-8 space-x-5 lg:grid-cols-2 p-12 px-10">
                             <div class="flex flex-col items-center pb-8">
                                 {{---todo temp img now need to implement profile picture ofc.--}}

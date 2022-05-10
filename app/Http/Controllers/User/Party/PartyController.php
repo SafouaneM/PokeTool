@@ -7,6 +7,9 @@ use App\Models\Party\Party;
 use App\Models\Party\PartyPokemon;
 use App\Models\Pokemon\Pokemon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+
 
 class PartyController extends Controller
 {
@@ -64,10 +67,43 @@ class PartyController extends Controller
         return redirect()->route('p:party');
 
     }
-//
-//    public function storeParty(Request $request) : \Illuminate\Http\RedirectResponse {
-//        dd($request->all());
-//    }
+
+    protected function editParty($id)
+    {
+        $partys = Party::find($id);
+
+        return view('user.party.edit', ['partys' => $partys]);
+
+    }
+
+    protected function updateParty(Request $request, $id)
+    {
+
+//        if ($request->level > 100) {
+//            return redirect()->back()->withErrors(['errors' => 'Check your inputs that kind of value is not allowed']);
+//        }
+
+        $partys = Party::findOrFail($id);
+
+
+        $input = $request->all();
+
+        $partys->fill($input)->save();
+
+
+        Session::flash('success', 'You have successfully edited your party information');
+
+        return redirect()->back();
+    }
+
+    protected function removeParty($id)
+    {
+
+        $partys = Party::find($id);
+        $partys->delete();
+
+        return redirect()->route('p:party')->with('success', 'Party removed from list.');
+    }
 
 
 }

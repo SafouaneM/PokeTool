@@ -37,23 +37,20 @@
 
                             </div>
                             <div class="flex flex-col mt-5 pb-8">
-                                {{--                        @foreach($party->parties as $user)--}}
+                                                                        <a href="{{route('p:edit-party', $party->id)}}" class="text-center rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">
+                                                                            Edit
+                                                                        </a>
 
-                                {{--                            @if($user->pivot->is_owned && $user->pivot->user_id === auth()->user()->id)--}}
-                                {{--                                        <a href="{{route('p:edit-pokemon_box', $user->pivot->id)}}" class="text-center rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">--}}
-                                {{--                                            Edit--}}
-                                {{--                                        </a>--}}
-                                {{---todo ugly.---}}
-                                {{--                                        <form action="{{route('p:remove-pokemon_box', $user->pivot->id)}}" class="rounded-full font-bold  bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5 text-center" method="POST">--}}
-                                {{--                                            @csrf--}}
-                                {{--                                            <a href="" class="rounded-full font-bold  bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5 text-center">--}}
-                                {{--                                                <button--}}
-                                {{--                                                    type="submit"--}}
-                                {{--                                                    class="">--}}
-                                {{--                                                    Remove--}}
-                                {{--                                                </button>--}}
-                                {{--                                            </a>--}}
-                                {{--                                        </form>--}}
+                                                                        <form action="{{route('p:remove-party', $party->id)}}" class="rounded-full font-bold  bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5 text-center" method="POST">
+                                                                            @csrf
+                                                                            <a href="" class="rounded-full font-bold  bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5 text-center">
+                                                                                <button
+                                                                                    type="submit"
+                                                                                    class="">
+                                                                                    Remove
+                                                                                </button>
+                                                                            </a>
+                                                                        </form>
 
                             </div>
                         </div>

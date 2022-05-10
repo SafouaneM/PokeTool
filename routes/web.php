@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/', 'App\Http\Controllers\Home@displayContent')->middleware(['auth'])->name('home');
+
 
 //Start Profile
 Route::prefix('profile')->group(function () {
@@ -38,7 +37,9 @@ Route::prefix('profile')->group(function () {
     Route::get('/party/create', 'App\Http\Controllers\User\Party\PartyController@createNewParty')->middleware(['auth'])->name('p:create-party');
     Route::post('/party', 'App\Http\Controllers\User\Party\PartyController@storeParty')->middleware(['auth'])->name('p:store-party');
     Route::get('/party/{id}', 'App\Http\Controllers\User\Party\PartyController@showIndividualParty')->middleware(['auth'])->name('p:show-party');
-
+    Route::get('/party/edit/{id}', 'App\Http\Controllers\User\Party\PartyController@editParty')->middleware(['auth'])->name('p:edit-party');
+    Route::post('/party/edit/{id}', 'App\Http\Controllers\User\Party\PartyController@updateParty')->middleware(['auth'])->name('p:update-party');
+    Route::post('/party/{id}', 'App\Http\Controllers\User\Party\PartyController@removeParty')->middleware(['auth'])->name('p:remove-party');
 
 });
 //End profile
